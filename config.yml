@@ -1,0 +1,92 @@
+# ===== Общие настройки =====
+date-format: "yyyy-MM-dd HH:mm:ss"
+show-heads: true            # голова игрока перед ником (нужен клиент 1.21.9+)
+name-color: "#ff5555"       # цвет ника
+
+# Бейджи рангов: берётся ПЕРВЫЙ, на который у игрока есть право.
+# Если используешь LuckPerms: lp group admin permission set killfeed.rank.admin true
+ranks:
+  - permission: killfeed.rank.admin
+    badge: "<dark_gray>[<#ff3355><bold>АДМИН</bold><dark_gray>]"
+  - permission: killfeed.rank.moder
+    badge: "<dark_gray>[<#33aaff><bold>МОДЕР</bold><dark_gray>]"
+  - permission: killfeed.rank.vip
+    badge: "<dark_gray>[<#ffcc33><bold>VIP</bold><dark_gray>]"
+
+# ===== Убийства =====
+kill:
+  enabled: true
+  hide-vanilla-message: true
+  format:
+    - "<#ff5555><bold>☠ Убийство"
+    - "<#9fd8ff>Дата: <#7fe8ff><date>"
+    - "<#9fd8ff>Убийца: <killer>"
+    - "<#9fd8ff>Жертва: <victim>"
+    - "<#9fd8ff>Оружие: <#7fe8ff><weapon>"
+    - "<#9fd8ff>Причина: <#ffffff><reason>"
+
+# ===== Действия модераторов (ключ = команда) =====
+# duration: true  -> 2-й аргумент это срок (30m, 1h, 7d, 1d12h)
+# permanent: true -> если срок не указан, пишем НАВСЕГДА
+# format: свой шаблон; если нет - берётся default-action-format
+default-action-format:
+  - "<#ff5555><bold>⚠ <title>"
+  - "<#9fd8ff>Игрок: <target>"
+  - "<#9fd8ff>Дата: <#7fe8ff><date>"
+  - "<#9fd8ff>Время: <#7fe8ff><time>"
+  - "<#9fd8ff>Осталось: <#7fe8ff><remaining>"
+  - "<#9fd8ff>Модератор: <moderator>"
+  - "<#9fd8ff>Причина: <#ffffff><reason>"
+
+actions:
+  ban:
+    title: "Бан"
+    permission: minecraft.command.ban
+    permanent: true
+  ban-ip:
+    title: "Бан по IP"
+    permission: minecraft.command.ban-ip
+    permanent: true
+  tempban:                       # команда из другого плагина (Essentials и т.п.)
+    title: "Временный бан"
+    permission: essentials.tempban
+    duration: true
+  kick:
+    title: "Кик"
+    permission: minecraft.command.kick
+    format:
+      - "<#ff5555><bold>⚠ <title>"
+      - "<#9fd8ff>Игрок: <target>"
+      - "<#9fd8ff>Дата: <#7fe8ff><date>"
+      - "<#9fd8ff>Модератор: <moderator>"
+      - "<#9fd8ff>Причина: <#ffffff><reason>"
+  pardon:
+    title: "Разбан"
+    permission: minecraft.command.pardon
+    format:
+      - "<#55ff88><bold>✔ <title>"
+      - "<#9fd8ff>Игрок: <target>"
+      - "<#9fd8ff>Дата: <#7fe8ff><date>"
+      - "<#9fd8ff>Модератор: <moderator>"
+  mute:
+    title: "Мут"
+    permission: essentials.mute
+    duration: true
+    permanent: true
+  unmute:
+    title: "Размут"
+    permission: essentials.mute
+    format:
+      - "<#55ff88><bold>✔ <title>"
+      - "<#9fd8ff>Игрок: <target>"
+      - "<#9fd8ff>Дата: <#7fe8ff><date>"
+      - "<#9fd8ff>Модератор: <moderator>"
+  warn:
+    title: "Предупреждение"
+    permission: killfeed.admin
+    format:
+      - "<#ffcc33><bold>⚠ <title>"
+      - "<#9fd8ff>Игрок: <target>"
+      - "<#9fd8ff>Дата: <#7fe8ff><date>"
+      - "<#9fd8ff>Модератор: <moderator>"
+      - "<#9fd8ff>Причина: <#ffffff><reason>"
